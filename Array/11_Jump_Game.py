@@ -27,6 +27,33 @@ Beats
 of users with Python3
 """
 
+"""
+Another greedy approach
+Runtime 
+345
+ms
+Beats
+86.32%
+of users with Python3
+Memory
+17.83
+MB
+Beats
+72.04%
+of users with Python3
+"""
+class Solution:
+    def canJump(self, nums: List[int]) -> bool:
+        gas = 0
+        for n in nums:
+            if gas < 0:
+                return False
+            elif n > gas:
+                gas = n
+            gas -= 1
+            
+        return True
+
 # Dynamic
 """
 In this solution, good_index keeps track of the leftmost "good" index. We iterate backwards through the array, and for each position, we check if there exists a jump that reaches the good_index. If there does, we update good_index to the current position. Finally, we check if the beginning of the array is a "good" index.
